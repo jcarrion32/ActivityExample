@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.activityexample">
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.ActivityExample"
+        tools:targetApi="31">
+        <activity
+            android:name=".SecondActivity"
+            android:exported="false"
+            android:launchMode="standard"/>
+<!--
+    launch mode: change the launching behavior of activities
+    standard: default mode
+        A->B->C->D  stack(first in, first out) -> B -> B
+        our stack: A B C D B B
+
+    singleTop: only allows for a single activity of is type on top of the stack
+        A->B(singleTop) ->C->D->B->B
+        our stack: A B C D B
+
+    singleTask: only allows for one instance of that activity in the stack
+        A -> B(single task) -> C -> D -> B
+        our stack: A B   (C and D get destroy)
+
+    singleInstance: creates its own stack
+        A -> B(SingleInstance) -> C -> D-> B
+        our Stack: A C D
+        SingleInstanceStack: B
+-->
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
